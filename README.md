@@ -2,6 +2,13 @@
 # nhentai下載器
 支援 **Windows/Linux(Android)**
 
+## 前置作業
+這個程式會用到 **BeautifulSoup4** 函式庫，需要額外安裝
+##### Python 2 使用 pip 安裝
+`pip install beautifulsoup4`
+##### Python 3 使用 pip 安裝
+`pip3 install beautifulsoup4`
+
 ## 使用
 輸入車號即可
 
