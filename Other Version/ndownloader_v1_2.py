@@ -56,9 +56,9 @@ while True:
 
     carNum = input("輸入車號：")
     try:
-        folder = os.mkdir("nhentai下載器/Download/" + str(carNum))
+        folder = os.mkdir("python/nhentai下載器/Download/" + str(carNum))
     except FileExistsError:
-        folder = os.mkdir("nhentai下載器/Download/" + str(carNum) + "(same)")
+        folder = os.mkdir("python/nhentai下載器/Download/" + str(carNum) + "(same)")
 
 
     topUrl = "https://nhentai.net/g/" + str(carNum)
@@ -105,7 +105,7 @@ while True:
         #print(picture) 純粹註解，檢查程式用
 
         #呼叫下載圖片
-        pic_path = "nhentai下載器/Download/" + str(carNum) + "/" + str(i)
+        pic_path = folder + "/" + str(i)
         download_pic(picture,pic_path)
         #等待一秒
         time.sleep(0.5)
