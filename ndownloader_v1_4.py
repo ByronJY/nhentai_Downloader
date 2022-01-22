@@ -20,8 +20,8 @@ print("""
 
 ====================== Made by ByJY ======================
 
-version: 1.3 (Windows/Linux/Android)
-2022/1/21
+version: 1.4 (Windows/Linux/Android/iPhone)
+2022/1/23
 
 """)
 
@@ -82,10 +82,12 @@ def get_HTML(url):
 
 # 前置作業
 # 判斷作業系統，切換分隔符
-SLASH = "\\"
+SLASH = "/"
 if platform.system() == "Windows":
     SLASH = "\\"
 elif platform.system() == "Linux":
+    SLASH = "/"
+elif platform.system() == "Darwin":
     SLASH = "/"
 else:
     print("本程式可能不支援你的作業系統")
