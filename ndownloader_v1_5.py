@@ -20,10 +20,23 @@ print("""
 
 ====================== Made by ByJY ======================
 
-version: 1.4 (Windows/Linux/Android/iPhone)
-2022/1/23
+version: 1.5 (Windows/Linux/Android/iPhone)
+2022/5/21
 
+輸入格式為「車號」或「#車號」，「q」或「Q」結束程式
 """)
+
+# 檢查輸入
+def check_input(string):
+    if string[0] == 'q' or string[0] == 'Q': # 輸入「q」或「Q」結束程式
+        return 0
+    elif string[0] == '#': # 輸入格式可為「#車號」或「車號」
+        string = string.split('#')
+        return string[len(string)-1]
+    elif string[0] >= '0' and string[0] <= '9':
+        return string
+    else:
+        return -1
 
 # 取得頁數資訊
 def find_pages(lastpage):
@@ -54,9 +67,9 @@ def download_pic(picture,path):
 
 
 # 檢查路徑是否存在，若不存在則建立
-def cheak_dir(dir, SLASH):
+def check_dir(dir, SLASH):
     try:
-        folder = os.mkdir(dir + SLASH +"Download")
+        folder = os.mkdir(dir + SLASH +"Downloads")
     except FileExistsError:
         pass
 
@@ -74,7 +87,7 @@ def get_HTML(url):
         if e.code == 404:
             return 404
         else:
-            print("HTTP error: " + e.code)
+            print("HTTP error: " + str(e.code))
             return -1
 
     # 解析網頁原始碼
@@ -94,13 +107,22 @@ else:
 
 #NOW_DIR = os.path.abspath(os.getcwd())
 NOW_DIR = os.path.dirname(os.path.realpath(__file__))
-DIR = NOW_DIR + SLASH + "Download" + SLASH
-cheak_dir(NOW_DIR, SLASH) # 檢查路徑是否存在
+DIR = NOW_DIR + SLASH + "Downloads" + SLASH
+check_dir(NOW_DIR, SLASH) # 檢查路徑是否存在
 
 
+###############################           主程式           ###############################
 while True:
+    str_in = input("輸入車號：")
 
-    carNum = input("輸入車號：")
+    carNum = check_input(str_in)
+    if carNum == 0:
+        print("結束程式")
+        break
+    elif carNum == -1:
+        print("輸入格式有誤\n應為「車號」或「#車號」，如「355500」、「#368614」\n")
+        continue
+
 
     topUrl = "https://nhentai.net/g/" + str(carNum)
     print(topUrl)
