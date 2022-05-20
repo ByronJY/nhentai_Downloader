@@ -1,6 +1,6 @@
 ###### nhentai_Downloader
 # nhentai下載器
-支援 **Windows/Linux(Android)**
+支援 **Windows/Linux(Android)/iPhone(Darwin)**
 
 ## 前置作業
 這個程式會用到 **BeautifulSoup4** 函式庫，需要額外安裝
